@@ -1,0 +1,25 @@
+#context-menu {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 10px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+}
+
+.context-item {
+    cursor: pointer;
+    padding: 8px 15px;
+}
+
+.context-item:hover {
+    background: #f8f8f8;
+}
+
+.context-divider {
+    border-bottom: 1px solid #cccccc;
+    margin: 10px 0;
+}

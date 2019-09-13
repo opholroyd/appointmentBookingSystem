@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import SessionHeader from './components/SessionHeader';
+import AppointmentSlotDialog from './components/AppointmentSlotDialog';
+import GridData from './components/GridData';
+import ContextMenu from './components/ContextMenu';
 
 function App() {
-  return (
+  const [session, setSession] = useState(15); 
+  const [time, setTime] = useState("");
+
+  const handleSlotChange = e => {
+    setSession(e.target.value)
+    console.log(session)
+  }
+
+  const slotClick = (clickTime) =>
+  {
+    setTime(clickTime)
+    document.getElementById('booking-container').style.visibility = "visible"
+  }
+
+  return ( 
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <SessionHeader sessionHandler = {handleSlotChange} />
+        <GridData slotTimeSelection = {slotClick}/>
+        <AppointmentSlotDialog slotTimeSelection = {time}/>
+        <ContextMenu slotTimeSelection = {time}/>
+     </div>
+  )
 }
 
-export default App;
+export default App
+
+//template strings in react
+//{"TEST"+VAR}
+
